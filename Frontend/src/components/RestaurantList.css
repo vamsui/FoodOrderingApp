@@ -1,0 +1,23 @@
+/* RestaurantList.css */
+
+/* Styling for the restaurant card */
+
+
+.cd {
+    border-radius: 16px;
+    margin-top: 20px;
+    height: 16rem;
+}
+
+.restaurant-card {
+    transition: transform 0.2s ease-in-out;
+
+  }
+  
+  /* Styling for the card when hovering */
+  .restaurant-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
+    /* Add any other styling you want for the hover effect */
+  }
+  
