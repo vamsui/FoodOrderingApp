@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css'
+import Navigationbar from "./Navgationbar";
 function Addrestaurant() {
   const navigate = useNavigate();
 
-  const [Restid, setId] = useState("");
+  const [restid, setRestId] = useState("");
   const [restaurantname, setRestaurantName] = useState("");
   const [description, setDescription] = useState("");
   const [address, setAddress] = useState("");
@@ -34,7 +35,7 @@ function Addrestaurant() {
     }).then(response => response.json())
       .then(json => console.log(json))
     alert("Restaurant is added");
-    setId("");
+    setRestId("");
     setRestaurantName("");
     setDescription("");
     setAddress("");
@@ -50,11 +51,22 @@ function Addrestaurant() {
 
 
   return (
+
+
     <div>
+          <Navigationbar/>
       <h1>Registration Details</h1>
       <div class="container mt-4" >
         <form method='post' action='' onSubmit={handleFormSubmit}>
           <div class="form-group">
+
+          <label>Restaurant Id</label>
+            <input type="text" class="form-control" id="firstname"
+              value={restid}
+              onChange={(event) => {
+                setRestId(event.target.value);
+              }}
+            />
 
             <label>Restaurant Name</label>
             <input type="text" class="form-control" id="firstname"

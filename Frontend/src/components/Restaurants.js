@@ -3,14 +3,26 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import './RestaurantList.css'; // Import your CSS file
 import Form from 'react-bootstrap/Form'
-
+import Navigationbar from './Navgationbar';
+import { useUser } from './UserContext'; // Import useUser from UserContext
+import { useNavigate } from 'react-router-dom';
 
 
 function RestaurantList() {
+  const navigate=useNavigate();
+  const userContext = useUser(); // Get the user context object
+
+  // Access the menulist property from the user context object
+  
+  // Now you can use menulist as needed
+  
+  
   const [restaurants, setRestaurants] = useState([]);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
   const [searchQuery, setSearchQuery] = useState('');
+
+
 
   useEffect(() => {
     // Fetch restaurant data from the backend API
@@ -35,18 +47,28 @@ function RestaurantList() {
     setSelectedRestaurant(null); // Clear selected restaurant when searching
   };
 
-
-
+  
   const filteredRestaurants = restaurants.filter((restaurant) =>
 
     restaurant.restaurantname.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+
+  const menuHandler=(restaurant)=>{
+    setSelectedRestaurant(restaurant);
+  
+    userContext.menulist=restaurant.restid
+    navigate('/restmenu')
+  };
+
   return (
-    <div>
-      <h1>Restaurants List</h1>
+    <div  className='body'>
+      <Navigationbar/>
+
+      <div className="container mt-3">
 
       <Form className='d-flex justify-content-center align-items-center mt-3'>
+      
                 <Form.Group className=" mx-2 col-lg-4" controlId="formBasicEmail">
 
                     <Form.Control type="text"
@@ -61,8 +83,8 @@ function RestaurantList() {
 
       <div className="row" style={{ width:'75rem',border:"none"}}>
         {filteredRestaurants.map((restaurant) => (
-          <div className="col-md-4" key={restaurant.id}>
-            <div className="card mb-4 mt-2 d-flex justify-content-around align-items-center  restaurant-card" >
+          <div className="col-md-4" key={restaurant.restid}>
+            <div className="card mb-4 mt-2   restaurant-card" >
               <img
                 src={restaurant.imageurl}
                 className=" cd"
@@ -74,9 +96,7 @@ function RestaurantList() {
                 <p className="card-text">Address: {restaurant.address}</p>
                 <p className="card-text">Phone: {restaurant.mobile}</p>
                 <button
-                  className="btn btn-primary"
-
-                >
+                  className="btn btn-primary" onClick={() => menuHandler(restaurant)}>
                   View Menu
                 </button>
               </div>
@@ -85,6 +105,7 @@ function RestaurantList() {
         ))}
       </div>
       </section>
+      </div>
     </div>
   );
 }

@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 data class Restaurant (
     @Id
     val id: String?=null,
+    val restid:String?=null,
     val restaurantname:String?=null,
     val description:String?=null,
     val address:String?=null,

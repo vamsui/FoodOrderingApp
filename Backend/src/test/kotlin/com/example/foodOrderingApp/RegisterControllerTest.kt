@@ -23,6 +23,7 @@ class RegisterControllerTest {
     @Autowired
     lateinit var registerRepositary: RegisterRepositary
 
+    @Autowired
     lateinit var  registerController: RegisterController
 
     val user= User("651e604830776d74d1892345","sam","bill","sam@gmail.com","Uu@12345","Uu@12345",9087657665)
@@ -49,7 +50,9 @@ class RegisterControllerTest {
 
     @Test
     fun getUsersByEmail(){
-        Mockito.`when`(registerRepositary.findByEmail("abc@gmail,com")).thenReturn(Mono.just(user))
+
+        Mockito.`when`(registerService.checkEmailExists("abc@gmail.com")).thenReturn(Mono.just(true))
+
 
         StepVerifier.create(registerController.checkEmailExists("abc@gmail.com"))
             .expectSubscription()
