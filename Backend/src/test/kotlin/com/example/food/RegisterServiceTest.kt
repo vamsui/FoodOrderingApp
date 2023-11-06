@@ -1,7 +1,7 @@
-package com.example.foodOrderingApp
+package com.example.food
 
-import com.example.foodOrderingApp.register.model.User
-import com.example.foodOrderingApp.register.service.RegisterService
+import com.example.food.register.model.User
+import com.example.food.register.service.RegisterService
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest

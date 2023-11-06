@@ -1,4 +1,4 @@
-package com.example.foodOrderingApp
+package com.example.food
 
 
 import org.springframework.context.annotation.Bean

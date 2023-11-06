@@ -1,6 +1,6 @@
-package com.example.foodOrderingApp.order.service
+package com.example.food.order.service
 
-import com.example.foodOrderingApp.order.model.Order
+import com.example.food.order.model.Order
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.kafka.core.KafkaTemplate

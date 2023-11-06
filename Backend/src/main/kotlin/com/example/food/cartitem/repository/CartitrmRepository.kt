@@ -1,10 +1,8 @@
-package com.example.foodOrderingApp.cartitem.repository
+package com.example.food.cartitem.repository
 
-import com.example.foodOrderingApp.cartitem.model.CartItem
-import com.example.foodOrderingApp.restaurantmenu.model.ItemList
+import com.example.food.cartitem.model.CartItem
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository
 import org.springframework.stereotype.Repository
-import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 @Repository

@@ -2,16 +2,12 @@
 import Form from 'react-bootstrap/Form'
 import './RestaurantList.css'; // Import your CSS file
 import mainheaderImage from "../assests/headerBanner.jpg";
-import Navigationbar from './Navgationbar';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import React, { useState, useEffect } from 'react';
 import { useCart } from './CartContext'; // Import useUser from UserContext
 import { useUser } from './UserContext'; // Import useUser from UserContext
-
 import MealsSummary from './MealsSummary';
 import { v4 as uuidv4 } from 'uuid';
+import Swal from 'sweetalert2';
 
 
 
@@ -25,9 +21,10 @@ function Menu() {
   const [items, setItems] = useState([]);
   const [selecteditem, setselecteditem] = useState(null);
   const [search, setSearch] = useState('');
-  const { cart, addToCart ,updateCart} = useCart();
-  const{isLoggedIn,useremail}=useUser();
+  const { cart, addToCart, updateCart } = useCart();
+  const { isLoggedIn, useremail } = useUser();
 
+  console.log(useremail)
   useEffect(() => {
     // Fetch restaurant data from the backend API
     fetch(`http://localhost:8080/v1/getmenu?restid=${menulist}`)
@@ -69,8 +66,8 @@ function Menu() {
       imageurl: item.imageurl,
     };
 
-    
-  
+
+
     // Make the API request to save or update the cart item with its unique orderitemid
     fetch('http://localhost:8080/v1/savecart', {
       method: 'POST',
@@ -88,20 +85,22 @@ function Menu() {
       .then((data) => {
         console.log(data.quantity)
         addToCart(data);
+        Swal.fire("Item added to your cart")
+
         console.log(cart)
-      //  console.log('Item added to cart:', data);
+        //  console.log('Item added to cart:', data);
       })
       .catch((error) => {
         console.error('Error adding item to cart:', error);
       });
   };
-  
 
 
 
 
 
-  const savecart=(item)=>{
+
+  const savecart = (item) => {
 
     fetch(
       `http://localhost:8080/v1/orderid?email=${useremail}&itemid=${item.itemid}`,
@@ -121,15 +120,16 @@ function Menu() {
       .then((data) => {
 
 
-        if (data.email===useremail && data.quantity>0) {
+        if (data.email === useremail && data.quantity > 0) {
           // If the item already exists in the cart, update its quantity
-    
+
           const existingCartItem = data;
           const updatedQuantity = existingCartItem.quantity + 1; // Increase the quantity by 1
           const updatedTotalCost = updatedQuantity * item.cost;
+          existingCartItem.email = useremail;
           existingCartItem.quantity = updatedQuantity;
           existingCartItem.totalcost = updatedTotalCost;
-  
+
           // Make a PUT request to update the item in the cart
           fetch('http://localhost:8080/v1/savecart', {
             method: 'POST',
@@ -146,11 +146,12 @@ function Menu() {
               return response.json();
             })
             .then((updatedData) => {
-                addToCart(updatedData)
-                console.log(cart)
+              
+              Swal.fire("Item added to your cart")
+              console.log(updatedData )
 
               // Handle the response, e.g., update your cart state
-            //  console.log('Item quantity increased in the cart:', updatedData);
+              //  console.log('Item quantity increased in the cart:', updatedData);
             })
             .catch((error) => {
               console.error('Error updating item quantity in the cart:', error);
@@ -167,18 +168,17 @@ function Menu() {
 
   }
 
-  const handlecart =(item) =>{
+  const handlecart = (item) => {
 
 
-   {isLoggedIn?(savecart(item)): alert("Login into your account")}
+    { isLoggedIn ? (savecart(item)) :Swal.fire("Login into your account") }
 
-   
- 
+
+
   }
 
   return (
-    <div className='body'>
-      <Navigationbar />
+    <div className='body' data-testid='menu-component'>
       <div className={"main-image"}>
         <img src={mainheaderImage} alt="A table full of delicious food!" />
       </div>
@@ -214,9 +214,9 @@ function Menu() {
                       <h5 className='card-title'>{item.name}</h5>
                       <p className='card-text'>{item.description}</p>
                       <p className='card-text'>{item.cost} </p>
-                      
+
                       <button
-                        className="btn btn-primary" onClick={ () => handlecart(item)}>
+                        className="btn btn-primary" onClick={() => handlecart(item)}>
                         Add to cart
                       </button>
                     </div>

@@ -1,7 +1,7 @@
-package com.example.foodOrderingApp.restaurantmenu.controller
+package com.example.food.restaurantmenu.controller
 
-import com.example.foodOrderingApp.restaurantmenu.model.ItemList
-import com.example.foodOrderingApp.restaurantmenu.service.MenuServiceimpl
+import com.example.food.restaurantmenu.model.ItemList
+import com.example.food.restaurantmenu.service.MenuServiceimpl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping

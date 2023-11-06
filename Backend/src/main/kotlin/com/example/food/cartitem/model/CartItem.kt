@@ -1,4 +1,4 @@
-package com.example.foodOrderingApp.cartitem.model
+package com.example.food.cartitem.model
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document

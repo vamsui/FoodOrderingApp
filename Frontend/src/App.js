@@ -31,8 +31,8 @@ function App() {
     <UserProvider>
       <CartProvider>
     <div className="App">
+    <Navigationbar/>
         <Routes>
-
 
           <Route path='/' element={<RestaurantList />}/>
           <Route path='/Model' element={<Model />}/>

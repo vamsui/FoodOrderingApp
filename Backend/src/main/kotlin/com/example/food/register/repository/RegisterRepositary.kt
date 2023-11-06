@@ -1,6 +1,6 @@
-package com.example.foodOrderingApp.register.repository
+package com.example.food.register.repository
 
-import com.example.foodOrderingApp.register.model.User
+import com.example.food.register.model.User
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository
 import org.springframework.stereotype.Repository
 import reactor.core.publisher.Mono

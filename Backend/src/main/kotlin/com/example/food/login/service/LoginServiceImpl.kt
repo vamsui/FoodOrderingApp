@@ -1,8 +1,7 @@
-package com.example.foodOrderingApp.login.service
+package com.example.food.login.service
 
 
-import com.example.foodOrderingApp.login.repository.LoginRepository
-import com.example.foodOrderingApp.login.model.User
+import com.example.food.login.repository.LoginRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono

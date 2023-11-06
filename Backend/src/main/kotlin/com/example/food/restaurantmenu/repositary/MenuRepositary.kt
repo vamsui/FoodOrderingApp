@@ -1,6 +1,6 @@
-package com.example.foodOrderingApp.restaurantmenu.repositary
+package com.example.food.restaurantmenu.repositary
 
-import com.example.foodOrderingApp.restaurantmenu.model.ItemList
+import com.example.food.restaurantmenu.model.ItemList
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository
 import org.springframework.stereotype.Repository
 import reactor.core.publisher.Flux

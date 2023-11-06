@@ -1,4 +1,4 @@
-package com.example.foodOrderingApp.restaurantlist.model
+package com.example.food.restaurantlist.model
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
@@ -7,12 +7,12 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Document
 data class Restaurant (
     @Id
-    val id: String?=null,
-    val restid:String?=null,
-    val restaurantname:String?=null,
-    val description:String?=null,
-    val address:String?=null,
-    val mobile: Long?=null,
-    val imageurl:String?=null,
+    var id: String?=null,
+    var restid:String?=null,
+    var restaurantname:String?=null,
+    var description:String?=null,
+    var address:String?=null,
+    var mobile: Long?=null,
+    var imageurl:String?=null,
     )
 

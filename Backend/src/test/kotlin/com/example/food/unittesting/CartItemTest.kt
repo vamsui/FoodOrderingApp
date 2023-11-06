@@ -1,8 +1,8 @@
-package com.example.foodOrderingApp.unittesting
+package com.example.food.unittesting
 
-import com.example.foodOrderingApp.cartitem.controller.Cartitemcontroller
-import com.example.foodOrderingApp.cartitem.model.CartItem
-import com.example.foodOrderingApp.cartitem.service.Cartitemimpl
+import com.example.food.cartitem.controller.Cartitemcontroller
+import com.example.food.cartitem.model.CartItem
+import com.example.food.cartitem.service.Cartitemimpl
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

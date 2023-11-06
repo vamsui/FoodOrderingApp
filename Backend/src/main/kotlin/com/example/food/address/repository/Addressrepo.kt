@@ -1,6 +1,6 @@
-package com.example.foodOrderingApp.address.repository
+package com.example.food.address.repository
 
-import com.example.foodOrderingApp.address.model.Address
+import com.example.food.address.model.Address
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository
 import org.springframework.stereotype.Repository
 

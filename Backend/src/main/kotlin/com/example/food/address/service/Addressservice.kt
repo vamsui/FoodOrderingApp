@@ -1,6 +1,6 @@
-package com.example.foodOrderingApp.address.service
+package com.example.food.address.service
 
-import com.example.foodOrderingApp.address.model.Address
+import com.example.food.address.model.Address
 import reactor.core.publisher.Mono
 
 interface Addressservice {

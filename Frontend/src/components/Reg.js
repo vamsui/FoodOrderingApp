@@ -1,9 +1,13 @@
 import { Avatar, Box, Grid, Paper, TextField, Typography, Button, Link } from '@mui/material';
 import LockIcon from '@mui/icons-material/Lock';
 import React from 'react';
-import { useEffect, useState, useNavigate } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
 import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css'
+import Swal from 'sweetalert2';
+
 
 
 function Reg() {
@@ -14,24 +18,14 @@ function Reg() {
     const btnstyle = { margin: '8px 0' }
     const [Regid, setId] = useState("");
     const [firstname, setFirstName] = useState("");
-    const [validfirstname, setValidFirstName] = useState(true);
     const [lastname, setLasttName] = useState("");
-    const [validlastname, setValidLastName] = useState(true);
     const [email, setEmail] = useState("");
-    const [validemail, setValidEmail] = useState(true);
     const [password, setPassword] = useState("");
-
-    const [validpassword, setValidPassword] = useState(true);
     const [confirmpassword, setConfirmPassword] = useState("");
-
-    const [validconfirmpassword, setValidConfirmPassword] = useState(true);
     const [mobile, setMobile] = useState("");
-
-    const [validmobile, setValidMobile] = useState(true);
     const [users, setUsers] = useState([]);
-    const [error, setError] = useState('');
-    const [emailExists, setEmailExists] = useState([]);
-
+    
+    const navigate = useNavigate();
 
     const isNameValid = (name) => {
         // Regular expression to allow letters followed by optional numbers at the end
@@ -58,78 +52,68 @@ function Reg() {
         return mobileRegex.test(mobile);
     };
 
-    const validateForm = () => {
 
+    const [validationMessages, setValidationMessages] = useState({
+        firstname: '',
+        lastname: '',
+        email: '',
+        password: '',
+        confirmpassword: '',
+        mobile: '',
+
+    });
+    const validateForm = () => {
+        const errors = {
+            firstname: '',
+            lastname: '',
+            email: '',
+            password: '',
+            confirmpassword: '',
+            mobile: '',
+        };
 
 
         if (!isNameValid(firstname)) {
-            setValidFirstName(false);
-            //alert('First name is invalid.');
-            return false;
-        }
-        setValidFirstName(true);
+            errors.firstname = 'Please enter a valid Firstname.';
 
+        }
         if (!isNameValid(lastname)) {
-            setValidLastName(false);
-            //  alert('Last name is invalid.');
-            return false;
+            errors.lastname = 'Please enter a valid Lastname.';
+
         }
-        setValidLastName(true);
-
-
+  
 
         if (!firstname.trim()) {
-            //   alert('Enter your name');
-            setValidFirstName(false);
-            setError('First name and last name are required.');
-            return false;
-        }
-        setValidFirstName(true);
+            errors.firstname = 'First name is required.';
 
+        }
         if (!lastname.trim()) {
-            //   alert('Enter your name');
-            setValidLastName(false);
-            setError('Last name and last name are required.');
-            return false;
-        }
-        setValidLastName(true);
+            errors.lastname = 'Last name is required.';
 
-        if (!isEmailValid(email)) {
-            setValidEmail(false);
-            setError('Please enter a valid email address.');
-            // alert('Please enter a valid email address.');
-            return false;
         }
-        setValidEmail(true);
+        if (!isEmailValid(email)) {
+            errors.email = 'Please enter a valid email address.';
+
+        }
 
         if (!isPasswordValid(password)) {
-            setValidPassword(false);
-            setError(
-                'Password must be at least 8 characters and contain one special character, one number, and one lowercase letter.'
-            );
+            errors.password = 'Please enter a valid password.';
 
-            return false;
         }
-        setValidPassword(true);
 
         if (password !== confirmpassword) {
-            setValidConfirmPassword(false);
-            setError('Passwords do not match.');
-            //alert('Passwords do not match.');
-            return false;
+            errors.confirmpassword = 'Password do not match.';
         }
-        setValidConfirmPassword(true);
+
         if (!isMobileValid(mobile)) {
-            setValidMobile(false);
-            setError('Mobile number is invalid.');
-            //alert('Mobile number is invalid.');
-            return false;
+            errors.mobile = 'Please enter a valid mobile number.';
+
         }
 
-        setValidMobile(true);
+        setValidationMessages(errors);
 
-        setError('');
-        return true;
+        return !Object.values(errors).some((error) => error); // Return true if there are no errors
+    
     };
 
 
@@ -172,7 +156,7 @@ function Reg() {
         }
         //console.log(checkEmailExistence());
         if (users === true) {
-            alert("Email already exists");
+            Swal.fire("Email user already registered");
             return;
         }
         const dataToSubmit = {
@@ -192,7 +176,7 @@ function Reg() {
         }).then(response => response.json())
             .then(json => console.log(json))
         console.log(email)
-        alert("Registration is successful");
+        Swal.fire("Registration is successfully")
         setId("");
         setFirstName("");
         setLasttName("");
@@ -201,6 +185,7 @@ function Reg() {
         setConfirmPassword("");
         setMobile("");
         setUsers("");
+        navigate("/Login");
 
 
     }
@@ -227,7 +212,7 @@ function Reg() {
                             onChange={(event) => setFirstName(event.target.value)}
                             style={{ padding: '12px' }}
                         />
-                        {!validfirstname && <p>Please enter valid  Firstname.</p>}
+                                    <div style={{ color: 'red' }}>{validationMessages.firstname}</div>
 
                     </div>
                     <div>
@@ -240,7 +225,7 @@ function Reg() {
                             onChange={(event) => setLasttName(event.target.value)}
                             style={{ padding: '12px' }}
                         />
-                        {!validlastname && <p>Please enter valid  Lastname.</p>}
+                                    <div style={{ color: 'red' }}>{validationMessages.lastname}</div>
                     </div>
                     <div>
                         <TextField
@@ -252,7 +237,7 @@ function Reg() {
                             onChange={(event) => setEmail(event.target.value)}
                             style={{ padding: '12px' }}
                         />
-                        {!validemail && <p>Please enter valid  Gmail.</p>}
+                                    <div style={{ color: 'red' }}>{validationMessages.email}</div>
                     </div>
                     <div>
                         <TextField
@@ -265,7 +250,8 @@ function Reg() {
                             onChange={(event) => setPassword(event.target.value)}
                             style={{ padding: '12px' }}
                         />
-                        {!validpassword && <p>Please enter valid  password.</p>}
+                        <div style={{ color: 'red' }}>{validationMessages.password}</div>
+
                     </div>
                     <div>
                         <TextField
@@ -279,8 +265,7 @@ function Reg() {
                             style={{ padding: '12px' }}
 
                         />
-                        {!validconfirmpassword && <p>Passwords do not match.</p>}
-
+                                    <div style={{ color: 'red' }}>{validationMessages.confirmpassword}</div>
                     </div>
                     <div>
                         <TextField country={'in'} label='Mobile' placeholder='phone number' type='number' fullWidth required
@@ -292,7 +277,7 @@ function Reg() {
                             style={{ padding: '12px' }} // Add inline style for padding
                         />
 
-                        {!validmobile && <p>Please enter valid number.</p>}
+<div style={{ color: 'red' }}>{validationMessages.mobile}</div>
                     </div>
                     <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth onClick={formHandler}>Sign in</Button>
                     

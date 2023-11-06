@@ -1,8 +1,8 @@
-package com.example.foodOrderingApp.unittesting
+package com.example.food.unittesting
 
-import com.example.foodOrderingApp.login.controller.LoginController
-import com.example.foodOrderingApp.login.repository.LoginRepository
-import com.example.foodOrderingApp.login.service.LoginServiceImpl
+import com.example.food.login.controller.LoginController
+import com.example.food.login.repository.LoginRepository
+import com.example.food.login.service.LoginServiceImpl
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito

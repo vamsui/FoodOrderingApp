@@ -1,8 +1,8 @@
-package com.example.foodOrderingApp.order.controller
+package com.example.food.order.controller
 
-import com.example.foodOrderingApp.order.model.Order
-import com.example.foodOrderingApp.order.service.KafkaProducer
-import com.example.foodOrderingApp.order.service.Orderimpl
+import com.example.food.order.model.Order
+import com.example.food.order.service.KafkaProducer
+import com.example.food.order.service.Orderimpl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux

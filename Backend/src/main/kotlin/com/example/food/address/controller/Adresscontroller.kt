@@ -1,7 +1,7 @@
-package com.example.foodOrderingApp.address.controller
+package com.example.food.address.controller
 
-import com.example.foodOrderingApp.address.model.Address
-import com.example.foodOrderingApp.address.service.Addressimpl
+import com.example.food.address.model.Address
+import com.example.food.address.service.Addressimpl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.PostMapping

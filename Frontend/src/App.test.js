@@ -1,35 +1,82 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom'; // Use MemoryRouter for testing
+import { render,screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 
-test('renders Login component when the root route is visited', async () => {
-  render(
-    <MemoryRouter initialEntries={['/']}>
+test('renders RestaurantList component on the default route', () => {
+  const { getByText } = render(
+    <MemoryRouter initialEntries={['/']} initialIndex={0}>
       <App />
     </MemoryRouter>
   );
 
-  await screen.findByText('Login');
-
-  // Now, check if the Signup component is rendered
-  const loginElement = screen.querySelector('Login');
-
-  expect(loginElement).toBeInTheDocument();
+  // Check if RestaurantList component is rendered on the default route
+  expect(getByText('Restaurants in Mumbai Open now')).toBeInTheDocument(); // Adjust text as needed
 });
 
-test('renders Signup component when the /Signup route is visited', async () => {
-  render(
-    <MemoryRouter initialEntries={['/Signup']}>
+test('renders Model component on the /Model route', () => {
+  const { getByText } = render(
+    <MemoryRouter initialEntries={['/Model']} initialIndex={0}>
       <App />
     </MemoryRouter>
   );
 
-  // Use findByText to wait for the element to appear
-  await screen.findByText('Signup');
+  // Check if Model component is rendered on the /Model route
+  const modelComponent = screen.getByTestId('model-component')
+    
+  expect(modelComponent).toBeInTheDocument();
 
-  // Now, check if the Signup component is rendered
-  const signupElement = screen.querySelector('Signup');
-
-  expect(signupElement).toBeInTheDocument();
 });
+
+
+test('renders Menu component on the Menu route', () => {
+  const { getByText } = render(
+    <MemoryRouter initialEntries={['/restmenu']} initialIndex={0}>
+      <App />
+    </MemoryRouter>
+  );
+
+  const menuComponent = screen.getByTestId('menu-component')
+    
+  expect(menuComponent).toBeInTheDocument();
+});
+
+
+
+test('renders Login component on the /Login route', () => {
+  const { getByText } = render(
+    <MemoryRouter initialEntries={['/Login']} initialIndex={0}>
+      <App />
+    </MemoryRouter>
+  );
+
+  // Check if Login component is rendered on the /Login route
+  expect(getByText('Login')).toBeInTheDocument(); // Adjust text as needed
+});
+
+
+
+test('renders Address component on the /Address route', () => {
+  const { getByText } = render(
+    <MemoryRouter initialEntries={['/Address']} initialIndex={0}>
+      <App />
+    </MemoryRouter>
+  );
+
+  expect(getByText('Enter your address')).toBeInTheDocument(); // Adjust text as needed
+
+});
+
+test('renders Checkout component on the /Checkout route', () => {
+  const { getByText } = render(
+    <MemoryRouter initialEntries={['/Checkout']} initialIndex={0}>
+      <App />
+    </MemoryRouter>
+  );
+
+  expect(getByText('Enter your card details')).toBeInTheDocument(); // Adjust text as needed
+
+});
+
+
+// Add more tests for other routes as needed

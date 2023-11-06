@@ -1,7 +1,7 @@
-package com.example.foodOrderingApp.order.service
+package com.example.food.order.service
 
-import com.example.foodOrderingApp.order.model.Order
-import com.example.foodOrderingApp.order.repository.OrderRepo
+import com.example.food.order.model.Order
+import com.example.food.order.repository.OrderRepo
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux

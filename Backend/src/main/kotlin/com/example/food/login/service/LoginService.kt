@@ -1,6 +1,5 @@
-package com.example.foodOrderingApp.login.service
+package com.example.food.login.service
 
-import com.example.foodOrderingApp.login.model.User
 import reactor.core.publisher.Mono
 
 interface LoginService {

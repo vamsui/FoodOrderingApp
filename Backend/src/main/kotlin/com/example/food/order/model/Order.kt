@@ -1,6 +1,6 @@
-package com.example.foodOrderingApp.order.model
+package com.example.food.order.model
 
-import com.example.foodOrderingApp.cartitem.model.CartItem
+import com.example.food.cartitem.model.CartItem
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 

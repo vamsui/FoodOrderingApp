@@ -49,6 +49,7 @@ header .nav-btn {
 	font-size: 1.8rem;
 }
 .nav-btn1{
+	
 	margin-right: 1px;
 	padding: 0px;
 	cursor: pointer;
@@ -59,8 +60,14 @@ header .nav-btn {
 	color: var(--textColor);
 	
 	opacity: 0.9;
-	font-size: 1.5rem;
+	font-size: 2.9rem;
 }
+.zomato-name {
+	font-size: 46px;
+	font-weight: bold;
+	color:pink
+  }
+  
 
 
 header div,

@@ -1,7 +1,7 @@
-package com.example.foodOrderingApp.address.service
+package com.example.food.address.service
 
-import com.example.foodOrderingApp.address.model.Address
-import com.example.foodOrderingApp.address.repository.Addressrepo
+import com.example.food.address.model.Address
+import com.example.food.address.repository.Addressrepo
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono

@@ -1,6 +1,6 @@
-package com.example.foodOrderingApp.order.repository
+package com.example.food.order.repository
 
-import com.example.foodOrderingApp.order.model.Order
+import com.example.food.order.model.Order
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository
 import org.springframework.stereotype.Repository
 

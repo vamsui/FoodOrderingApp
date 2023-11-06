@@ -1,6 +1,6 @@
-package com.example.foodOrderingApp.cartitem.service
+package com.example.food.cartitem.service
 
-import com.example.foodOrderingApp.cartitem.model.CartItem
+import com.example.food.cartitem.model.CartItem
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 

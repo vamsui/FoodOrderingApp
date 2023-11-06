@@ -1,7 +1,7 @@
-package com.example.foodOrderingApp.restaurantmenu.service
+package com.example.food.restaurantmenu.service
 
-import com.example.foodOrderingApp.restaurantmenu.model.ItemList
-import com.example.foodOrderingApp.restaurantmenu.repositary.MenuRepositary
+import com.example.food.restaurantmenu.model.ItemList
+import com.example.food.restaurantmenu.repositary.MenuRepositary
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux

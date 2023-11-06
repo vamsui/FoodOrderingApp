@@ -1,9 +1,9 @@
-package com.example.foodOrderingApp.unittesting
+package com.example.food.unittesting
 
-import com.example.foodOrderingApp.register.controller.RegisterController
-import com.example.foodOrderingApp.register.model.User
-import com.example.foodOrderingApp.register.repository.RegisterRepositary
-import com.example.foodOrderingApp.register.service.RegisterService
+import com.example.food.register.controller.RegisterController
+import com.example.food.register.model.User
+import com.example.food.register.repository.RegisterRepositary
+import com.example.food.register.service.RegisterService
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

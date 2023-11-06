@@ -1,8 +1,6 @@
-package com.example.foodOrderingApp.login.controller
+package com.example.food.login.controller
 
-import com.example.foodOrderingApp.login.service.LoginService
-import com.example.foodOrderingApp.login.service.LoginServiceImpl
-import com.example.foodOrderingApp.login.model.User
+import com.example.food.login.service.LoginServiceImpl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping

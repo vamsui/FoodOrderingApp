@@ -6,6 +6,8 @@ import "./Navigationbar.css";
 import { useUser } from './UserContext'; // Import useUser from UserContext
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 
 function Navigationbar()
 
@@ -23,33 +25,6 @@ function Navigationbar()
 
     const [itemcart, setItemCart] = useState([]);
 
-
-    useEffect(() => {
-      fetch('http://localhost:8080/v1/cartall')
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        }).then((data) => {
-          setItemCart(data);
-
-
-
-          
-        });
-    }, []);
-  
-  
-    const updateCartCount = () => {
-      const totalQuantity = itemcart.reduce((total, item) => total + item.quantity, 0);
-      setCartCount(totalQuantity);
-    };
-  
-    useEffect(() => {
-      updateCartCount(); // Update cart count when the component mounts
-    }, [itemcart]); // Listen for changes in itemcart
-  
 
 
     const showNavBar = () =>{
@@ -71,15 +46,21 @@ function Navigationbar()
     }
 
 
+    const aler=()=>{
+      Swal.fire("Login into your account")
+    }
+
 
     return(
     <header>
+        <div ><a className="zomato-name" href='/'>Zomato</a></div>
+
         <nav ref={navRef}>
             
             <li><a href='/'>Home</a></li>
             {isLoggedIn?(
             <li><a href='./Model'>Orders</a></li>):
-            (<li><a href='#'> Orders</a></li>)
+            (<li><a href='#' onClick={aler}> Orders</a></li>)
             }
             {isLoggedIn?(
             <li><a href='/' onClick={handleLogout}>Logout</a></li>)
@@ -93,23 +74,24 @@ function Navigationbar()
             </button>
 
         </nav>
-        
-    
+
         <button className='nav-btn' onClick={showNavBar}>
             <FaUser/>
         </button>
 
         {isLoggedIn?(
           <div>
-            <span  className='nav-btn1' onClick={showCartContents}  ><ShoppingCartIcon/ > </span><sup className=''>{cartCount}</sup></div>
+            <span  className='nav-btn1' onClick={showCartContents}  ><ShoppingCartIcon style={{ marginTop:'8px', fontSize: '31px' }} /  > </span></div>
             )  :
             (<div>
-              <span  className='nav-btn1' onClick={showCartContents}  ><ShoppingCartIcon/ > </span><sup className=''>{cartCount}</sup></div>)
+              <span  className='nav-btn1' onClick={aler}  ><ShoppingCartIcon style={{ marginTop:'8px', fontSize: '31px' }} / > </span></div>)
             }
         
        
 
-    </header>);
+    </header>
+    
+    );
 
 }
 

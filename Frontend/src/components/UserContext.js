@@ -12,10 +12,18 @@ export const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const[menulist,setMenuList]=useState(null);
   const[useremail,setUserEmail]=useState("");
+  const[userorderid,setUserOrderId]=useState("");
 
   const setUserEmailValue = (email) => {
     setUserEmail(email);
-  };  
+    localStorage.setItem('useremail', JSON.stringify(email));
+  };
+  
+  const setUserOrderIdValue = (orderid) => {
+    setUserOrderId(orderid);
+    localStorage.setItem('orderid', JSON.stringify(orderid));
+  };
+  
 
   useEffect(() => {
     // Check if the user is logged in by reading from localStorage
@@ -23,6 +31,18 @@ export const UserProvider = ({ children }) => {
     if (userLoggedIn) {
       setIsLoggedIn(JSON.parse(userLoggedIn));
     }
+
+    const useremail=localStorage.getItem('useremail');
+    if(useremail){
+      setUserEmailValue(JSON.parse(useremail));
+    }
+
+    const orderid=localStorage.getItem('orderid');
+    if(orderid){
+      setUserEmailValue(JSON.parse(orderid));
+    }
+
+
   }, []);
 
   const login = () => {
@@ -46,6 +66,9 @@ export const UserProvider = ({ children }) => {
     setMenuList,
     useremail,
     setUserEmailValue,
+    userorderid,
+    setUserOrderIdValue,
+
   
   };
 

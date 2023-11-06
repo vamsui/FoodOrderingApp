@@ -1,6 +1,6 @@
-package com.example.foodOrderingApp
+package com.example.food
 
-import com.example.foodOrderingApp.login.service.LoginServiceImpl
+import com.example.food.login.service.LoginServiceImpl
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest

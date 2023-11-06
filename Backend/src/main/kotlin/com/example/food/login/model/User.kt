@@ -1,4 +1,4 @@
-package com.example.foodOrderingApp.login.model
+package com.example.food.login.model
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document

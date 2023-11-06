@@ -1,7 +1,7 @@
-package com.example.foodOrderingApp.cartitem.controller
+package com.example.food.cartitem.controller
 
-import com.example.foodOrderingApp.cartitem.model.CartItem
-import com.example.foodOrderingApp.cartitem.service.Cartitemimpl
+import com.example.food.cartitem.model.CartItem
+import com.example.food.cartitem.service.Cartitemimpl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux

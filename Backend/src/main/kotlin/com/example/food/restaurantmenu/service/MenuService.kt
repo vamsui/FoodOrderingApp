@@ -1,6 +1,6 @@
-package com.example.foodOrderingApp.restaurantmenu.service
+package com.example.food.restaurantmenu.service
 
-import com.example.foodOrderingApp.restaurantmenu.model.ItemList
+import com.example.food.restaurantmenu.model.ItemList
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
